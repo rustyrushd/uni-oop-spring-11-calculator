@@ -9,6 +9,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class CalculatorController {
 
+  @GetMapping("/calculate")
+  public Calculator calculate(@RequestParam int firstNumber, @RequestParam String operation,
+                              @RequestParam int secondNumber) {
+    Calculator calculator = new Calculator(firstNumber, operation, secondNumber);
+    int result = switch (operation) {
+      case "+" -> add(firstNumber, secondNumber);
+      case "-" -> sub(firstNumber, secondNumber);
+      case "*" -> mul(firstNumber, secondNumber);
+      case "/" -> div(firstNumber, secondNumber);
+      default -> {
+        throw new IllegalArgumentException("Invalid operation selected, please type \"+\" to add, "
+            + "\"-\" to subtract, \"*\" to multiply or \"/\" to divide next time.");
+      }
+    };
+    calculator.setResult(result);
+    return calculator;
+  }
+
   @GetMapping("/add")
   public int add(@RequestParam int firstNumber, @RequestParam int secondNumber) {
     return firstNumber + secondNumber;
