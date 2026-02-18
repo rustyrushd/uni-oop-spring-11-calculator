@@ -1,5 +1,6 @@
 package xyz.rushd.service_layer.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,24 +27,34 @@ public class CalculatorController {
     return calculator;
   }
 
+  // Redundant endpoints for testing
+
   @GetMapping("/add")
-  public int add(@RequestParam int firstNumber, @RequestParam int secondNumber) {
-    return firstNumber + secondNumber;
+  public ResponseEntity<Integer> add(@RequestParam int firstNumber,
+      @RequestParam int secondNumber) {
+    int result = calculatorService.add(firstNumber, secondNumber);
+    return ResponseEntity.ok(result);
   }
 
   @GetMapping("/sub")
-  public int sub(@RequestParam int firstNumber, @RequestParam int secondNumber) {
-    return firstNumber - secondNumber;
+  public ResponseEntity<Integer> sub(@RequestParam int firstNumber,
+      @RequestParam int secondNumber) {
+    int result = calculatorService.sub(firstNumber, secondNumber);
+    return ResponseEntity.ok(result);
   }
 
   @GetMapping("/mul")
-  public int mul(@RequestParam int firstNumber, @RequestParam int secondNumber) {
-    return firstNumber * secondNumber;
+  public ResponseEntity<Integer> mul(@RequestParam int firstNumber,
+      @RequestParam int secondNumber) {
+    int result = calculatorService.mul(firstNumber, secondNumber);
+    return ResponseEntity.ok(result);
   }
 
   @GetMapping("/div")
-  public int div(@RequestParam int firstNumber, @RequestParam int secondNumber) {
-    return firstNumber / secondNumber;
+  public ResponseEntity<Integer> div(@RequestParam int firstNumber,
+      @RequestParam int secondNumber) {
+    int result = calculatorService.div(firstNumber, secondNumber);
+    return ResponseEntity.ok(result);
   }
 
 }
