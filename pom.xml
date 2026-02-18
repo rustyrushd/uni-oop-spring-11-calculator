@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>xyz.rushd</groupId>
-    <artifactId>11-spring_calculator</artifactId>
+    <artifactId>11-service_layer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>11-spring_calculator</name>
     <description>11-spring_calculator</description>
