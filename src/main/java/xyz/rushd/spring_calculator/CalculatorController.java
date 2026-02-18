@@ -1,11 +1,8 @@
 package xyz.rushd.spring_calculator;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -57,17 +54,4 @@ public class CalculatorController {
     return firstNumber / secondNumber;
   }
 
-  // Translate Java IllegalArgumentException into HTTP response
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
-  @ExceptionHandler(IllegalArgumentException.class)
-  public String handleIllegalArgumentException(IllegalArgumentException ex) {
-    return ex.getMessage();
-  }
-
-  // Translate Java ArithmeticException into HTTP response
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
-  @ExceptionHandler(ArithmeticException.class)
-  public String handleArithmeticException(ArithmeticException ex) {
-    return ex.getMessage();
-  }
 }
