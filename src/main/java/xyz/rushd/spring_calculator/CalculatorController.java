@@ -15,15 +15,15 @@ public class CalculatorController {
 
   @GetMapping("/calculate")
   public Calculator calculate(@RequestParam int firstNumber, @RequestParam String operation,
-                              @RequestParam int secondNumber) {
+      @RequestParam int secondNumber) {
     Calculator calculator = new Calculator(firstNumber, operation, secondNumber);
-    int result = switch (operation) {
+    calculator.setResult(switch (operation) {
       case "+" -> add(firstNumber, secondNumber);
       case "-" -> sub(firstNumber, secondNumber);
       case "*" -> mul(firstNumber, secondNumber);
       case "/" -> {
         if (secondNumber == 0) {
-          throw new IllegalArgumentException("Division by zero: To infinity and beyond, "
+          throw new ArithmeticException("Division by zero: To infinity and beyond, "
               + "as the second number = 0! " + "🚀");
         } else {
           yield div(firstNumber, secondNumber);
@@ -33,8 +33,7 @@ public class CalculatorController {
         throw new IllegalArgumentException("Invalid operation selected, please type \"+\" to add, "
             + "\"-\" to subtract, \"*\" to multiply or \"/\" to divide next time.");
       }
-    };
-    calculator.setResult(result);
+    });
     return calculator;
   }
 
@@ -58,10 +57,17 @@ public class CalculatorController {
     return firstNumber / secondNumber;
   }
 
-  // Translate Java IllegalArgumentException into HTTP responses
+  // Translate Java IllegalArgumentException into HTTP response
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ExceptionHandler(IllegalArgumentException.class)
-  public String handleBadRequest(IllegalArgumentException ex) {
+  public String handleIllegalArgumentException(IllegalArgumentException ex) {
+    return ex.getMessage();
+  }
+
+  // Translate Java ArithmeticException into HTTP response
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  @ExceptionHandler(ArithmeticException.class)
+  public String handleArithmeticException(ArithmeticException ex) {
     return ex.getMessage();
   }
 }
