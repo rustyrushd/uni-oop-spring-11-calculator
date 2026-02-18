@@ -5,33 +5,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.rushd.service_layer.Calculator;
+import xyz.rushd.service_layer.service.CalculatorService;
 
 
 @RestController
 @RequestMapping
 public class CalculatorController {
 
+  private final CalculatorService calculatorService;
+
+  public CalculatorController(CalculatorService calculatorService) {
+    this.calculatorService = calculatorService;
+  }
+
   @GetMapping("/calculate")
   public Calculator calculate(@RequestParam int firstNumber, @RequestParam String operation,
       @RequestParam int secondNumber) {
     Calculator calculator = new Calculator(firstNumber, operation, secondNumber);
-    calculator.setResult(switch (operation) {
-      case "+" -> add(firstNumber, secondNumber);
-      case "-" -> sub(firstNumber, secondNumber);
-      case "*" -> mul(firstNumber, secondNumber);
-      case "/" -> {
-        if (secondNumber == 0) {
-          throw new ArithmeticException("Division by zero: To infinity and beyond, "
-              + "as the second number = 0! " + "🚀");
-        } else {
-          yield div(firstNumber, secondNumber);
-        }
-      }
-      default -> {
-        throw new IllegalArgumentException("Invalid operation selected, please type \"+\" to add, "
-            + "\"-\" to subtract, \"*\" to multiply or \"/\" to divide next time.");
-      }
-    });
+    calculator.setResult(calculatorService.operation(firstNumber, operation, secondNumber));
     return calculator;
   }
 
