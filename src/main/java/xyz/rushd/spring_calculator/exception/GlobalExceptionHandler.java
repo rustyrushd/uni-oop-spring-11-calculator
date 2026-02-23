@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class CalculatorExceptionHandler {
+public class GlobalExceptionHandler {
 
   // Translate Java IllegalArgumentException into HTTP 400 response
   @ResponseStatus(HttpStatus.BAD_REQUEST)
