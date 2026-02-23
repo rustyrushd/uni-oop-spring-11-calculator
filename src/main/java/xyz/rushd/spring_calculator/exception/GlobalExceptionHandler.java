@@ -8,14 +8,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-  // Translate Java IllegalArgumentException into HTTP 400 response
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ExceptionHandler(IllegalArgumentException.class)
   public String handleIllegalArgumentException(IllegalArgumentException ex) {
     return ex.getMessage();
   }
 
-  // Translate Java ArithmeticException into HTTP 400 response
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ExceptionHandler(ArithmeticException.class)
   public String handleArithmeticException(ArithmeticException ex) {

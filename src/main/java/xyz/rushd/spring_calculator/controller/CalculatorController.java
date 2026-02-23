@@ -53,7 +53,7 @@ public class CalculatorController {
   public ResponseEntity<?> div(@RequestParam int firstNumber,
       @RequestParam int secondNumber) {
     if  (secondNumber == 0) {
-      return ResponseEntity.badRequest().body("Division by zero buddy :/");
+      return ResponseEntity.badRequest().body("Div by zero buddy, validation in controller :0!");
     }
     int result = calculatorService.div(firstNumber, secondNumber);
     return ResponseEntity.ok(result);
