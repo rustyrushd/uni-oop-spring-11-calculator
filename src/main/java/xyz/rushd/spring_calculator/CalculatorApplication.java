@@ -1,4 +1,4 @@
-package xyz.rushd.service_layer;
+package xyz.rushd.spring_calculator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
