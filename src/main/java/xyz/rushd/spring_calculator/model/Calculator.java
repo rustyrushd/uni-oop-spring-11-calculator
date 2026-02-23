@@ -1,4 +1,4 @@
-package xyz.rushd.spring_calculator;
+package xyz.rushd.spring_calculator.model;
 
 import lombok.Getter;
 import lombok.Setter;
