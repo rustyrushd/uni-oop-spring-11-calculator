@@ -1,10 +1,12 @@
 package xyz.rushd.spring_calculator.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Calculator {
   private int firstNumber;
   private String operation;
@@ -17,9 +19,4 @@ public class Calculator {
     this.secondNumber = secondNumber;
   }
 
-  public Calculator() {
-    this.firstNumber = 0 ;
-    this.operation = "";
-    this.secondNumber = 0;
-  }
 }
