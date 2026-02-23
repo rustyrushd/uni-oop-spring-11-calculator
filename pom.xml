@@ -10,10 +10,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>xyz.rushd</groupId>
-    <artifactId>11-service_layer</artifactId>
+    <artifactId>11-spring_calculator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>11-service_layer</name>
-    <description>11-service_layer</description>
+    <name>11-spring_calculator</name>
+    <description>11-spring_calculator</description>
     <url/>
     <licenses>
         <license/>

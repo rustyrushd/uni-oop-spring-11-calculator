@@ -1,4 +1,4 @@
-package xyz.rushd.service_layer;
+package xyz.rushd.spring_calculator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
