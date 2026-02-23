@@ -50,8 +50,11 @@ public class CalculatorController {
   }
 
   @GetMapping("/div")
-  public ResponseEntity<Integer> div(@RequestParam int firstNumber,
+  public ResponseEntity<?> div(@RequestParam int firstNumber,
       @RequestParam int secondNumber) {
+    if  (secondNumber == 0) {
+      return ResponseEntity.badRequest().body("Division by zero buddy :/");
+    }
     int result = calculatorService.div(firstNumber, secondNumber);
     return ResponseEntity.ok(result);
   }
